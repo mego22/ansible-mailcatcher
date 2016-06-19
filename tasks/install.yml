@@ -1,0 +1,13 @@
+---
+- name: Install Activesupport
+  gem: name=activesupport version=4.2.5 state=present user_install=no executable=/usr/local/bin/gem
+  environment: "{{ proxy_env }}"
+
+- name: Install Mailcatcher
+  gem: name=mailcatcher version=0.6.1 state=present user_install=no executable=/usr/local/bin/gem
+  environment: "{{ proxy_env }}"
+
+- name: Install startup script
+  copy: src=mailcather.service dest=/etc/systemd/system owner=root mode=644
+  notify:
+    - reload_systemd

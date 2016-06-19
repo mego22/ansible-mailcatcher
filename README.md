@@ -1,2 +1,4 @@
-# ansible-mailcatcher
-Ansible role for mailcatcher
+Role Name
+=========
+
+Installs mailcatcher
