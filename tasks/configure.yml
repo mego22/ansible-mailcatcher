@@ -1,0 +1,5 @@
+---
+- name: Install startup script
+  copy: src=mailcather.service dest=/etc/systemd/system owner=root mode=644
+  notify:
+    - reload_systemd
