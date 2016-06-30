@@ -1,7 +1,8 @@
 # encoding: utf-8
 source 'https://rubygems.org'
 
-gem 'inspec', path: '../../.'
+#gem 'inspec', path: '../../.'
+gem 'inspec'
 
 group :test do
   gem 'bundler', '~> 1.5'
