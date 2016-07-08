@@ -1,4 +1,4 @@
 ---
 - name: reload_systemd
-  sudo: yes
   command: systemctl daemon-reload
+  become: true
