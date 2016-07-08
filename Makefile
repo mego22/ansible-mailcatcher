@@ -1,5 +1,5 @@
 .ONESHELL:
-.PHONEY: help init update
+.PHONY: all help init update test
 
 # find bundle
 BUNDLE := $(shell which bundle)
@@ -19,7 +19,7 @@ help:
 converge: ## kitchen converge
 		@$(BUNDLE) exec kitchen converge
 
-create: ## kitchen converge
+create: ## kitchen create
 		@$(BUNDLE) exec kitchen create
 
 lint: ## ansible-lint
@@ -27,6 +27,9 @@ lint: ## ansible-lint
 
 list: ## kitchen list
 		@$(BUNDLE) exec kitchen list
+
+login: ## kitchen login
+		@$(BUNDLE) exec kitchen login
 
 test: ## kitchen test
 		@$(BUNDLE) exec kitchen test
