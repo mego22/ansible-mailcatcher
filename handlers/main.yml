@@ -2,3 +2,7 @@
 - name: reload_systemd
   command: systemctl daemon-reload
   become: true
+
+- name: reload_mailcatcher
+  command: systemctl restart mailcatcher
+  become: true
