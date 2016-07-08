@@ -1,4 +1,14 @@
 ---
+- name: Install Dependencies for Redhat/CentOS
+  yum: name={{ item }} state=installed
+  with_items:
+    - ruby
+    - ruby-devel
+    - sqlite-devel
+    - gcc
+    - gcc-c++
+  when: ansible_os_family == "RedHat"
+
 - name: Install Activesupport
   gem: name=activesupport version=4.2.5 state=present user_install={{ limit_to_user }} executable={{ gem_to_use }}
 
