@@ -12,5 +12,10 @@
 - name: Install Activesupport
   gem: name=activesupport version=4.2.5 state=present user_install={{ limit_to_user }} executable={{ gem_to_use }}
 
-- name: Install Mailcatcher
-  gem: name=mailcatcher version=0.6.1 state=present user_install={{ limit_to_user }} executable={{ gem_to_use }}
+- name: Install Mailcatcher version {{ mailcatcher_version }}
+  gem: name=mailcatcher version={{ mailcatcher_version }} state=present user_install={{ limit_to_user }} executable={{ gem_to_use }}
+  when: "mailcatcher_version != 'latest'"
+
+- name: Install Mailcatcher latest version
+  gem: name=mailcatcher state={{ mailcatcher_version }} user_install={{ limit_to_user }} executable={{ gem_to_use }}
+  when: "mailcatcher_version == 'latest'"
