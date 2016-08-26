@@ -4,7 +4,7 @@ After=network.service
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/mailcatcher --foreground --ip 10.0.2.15
+ExecStart=/usr/local/bin/mailcatcher --foreground --ip {{ mailcatcher_ip }}
 
 [Install]
 WantedBy=multi-user.target

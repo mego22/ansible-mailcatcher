@@ -1,4 +1,8 @@
 ---
 - name: reload_systemd
-  sudo: yes
   command: systemctl daemon-reload
+  become: true
+
+- name: reload_mailcatcher
+  command: systemctl restart mailcatcher
+  become: true
