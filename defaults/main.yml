@@ -1,7 +1,5 @@
 ---
-limit_to_user: no
-gem_to_use: "/usr/bin/gem"
-
+mailcatcher_version: latest
 mailcatcher_ip: 0.0.0.0
 mailcatcher_smtp_ip: 0.0.0.0
 mailcatcher_smtp_port: 1025
