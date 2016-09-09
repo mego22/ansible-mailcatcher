@@ -1,4 +1,6 @@
 ---
-- include: install.yml
+- include: RedHat-install.yml
+  when: ansible_os_family == "RedHat"
+
 - include: configure.yml
 - include: service.yml
