@@ -1,28 +1,33 @@
 ---
 driver:
-  name: vagrant
+  name: docker
+  use_sudo: false
+  privileged: true
+
+transport:
+  max_ssh_sessions: 5
 
 provisioner:
-  hosts: all
   name: ansible_playbook
-  # Use el7 epel repo instead of the default el6
-  #ansible_yum_repo: "https://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm"
-  ansible_yum_repo: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
+  hosts: all
+  enable_yum_epel: true
+  idempotency_test: true
+  ansible_verbose: true
+  ansible_verbosity: 2
+  ansible_diff: true
+  ansible_extra_flags: <%= ENV['ANSIBLE_EXTRA_FLAGS'] %>
   require_chef_for_busser: false
   require_ruby_for_busser: false
-  ansible_verbosity: 2
-  ansible_verbose: true
-  # starting playbook is at: test/integration/default/default.yml
 
 verifier:
   name: inspec
 
 platforms:
-  - name: centos72
-    driver:
-      provider: vmware_fusion
-      box: boxcutter/centos72
-      boxurl: boxcutter/centos72
+- name: centos-7
+  driver:
+    image: centos:7
+    privileged: true
+    run_command: /usr/sbin/init
 
 suites:
 - name: default

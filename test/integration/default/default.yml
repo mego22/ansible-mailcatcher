@@ -1,5 +1,14 @@
 ---
 - name: wrapper playbook for kitchen testing
   hosts: all
+  pre_tasks:
+    - name: Install Ruby on RHEL 7 instances
+      yum: name={{ item }} state=installed
+      with_items:
+        - net-tools
+        - ruby-2.0.0.598
+        - ruby-devel-2.0.0.598
+      when: ansible_os_family == "RedHat"
+
   roles:
-    - ansible-mailcatcher
+    - ansible-role-mailcatcher
