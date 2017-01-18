@@ -6,6 +6,7 @@
     - gcc
     - gcc-c++
     - make
+    - ruby-devel
   when: ansible_os_family == "RedHat"
 
 - name: Install Activesupport
