@@ -9,6 +9,9 @@
     - ruby-devel
   when: ansible_os_family == "RedHat"
 
+- name: Install Minitest
+  gem: name=minitest version=5.12.0 state=present user_install={{ limit_to_user }} executable={{ gem_to_use }}
+  
 - name: Install Activesupport
   gem: name=activesupport version=4.2.5 state=present user_install={{ limit_to_user }} executable={{ gem_to_use }}
 
